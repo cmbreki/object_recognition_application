@@ -1,7 +1,9 @@
-# Object Recognition App
+# Object Recognition app
 
 Real-time object detection using your device camera.
 Built with **Python (Flask)** backend + **TensorFlow.js (COCO-SSD)** frontend AI.
+
+Application available **[here](https://object-recognition-application.onrender.com/)**
 
 ---
 
@@ -14,12 +16,12 @@ Built with **Python (Flask)** backend + **TensorFlow.js (COCO-SSD)** frontend AI
 
 ---
 
-## How It Works
+## How it works
 
 1. **Backend (Flask)** - Serves the HTML page; no AI processing on server side
 2. **Frontend (TensorFlow.js)** - Downloads pre-trained COCO-SSD model on first use
-3. **Browser Processing** - Your camera feed is analyzed locally in real-time
-4. **Canvas Visualization** - Detected objects drawn with bounding boxes and confidence scores
+3. **Browser processing** - Your camera feed is analyzed locally in real-time
+4. **Canvas visualization** - Detected objects drawn with bounding boxes and confidence scores
 
 ---
 
@@ -31,7 +33,7 @@ Built with **Python (Flask)** backend + **TensorFlow.js (COCO-SSD)** frontend AI
 
 ---
 
-## Run Locally
+## Run locally
 
 ```bash
 # 1. Install dependencies
@@ -48,7 +50,7 @@ http://localhost:5000
 
 ---
 
-## Project Structure
+## Project structure
 
 ```
 object_recognition_app/
@@ -67,7 +69,7 @@ object_recognition_app/
         └── script.js      ← Camera, video processing
 ```
 
-## What Can It Detect?
+## What can it detect?
 
 The COCO-SSD model recognizes **90 object classes** including:
 person, bicycle, car, motorbike, plane, bus, train, truck,
