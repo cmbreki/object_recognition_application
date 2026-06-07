@@ -1,0 +1,301 @@
+/* ============================================================
+   Object Recognition App — Stylesheet
+   ============================================================ */
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Base ---------- */
+body {
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  background: #f4f4f6;
+  color: #1a1a2e;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+}
+
+/* ---------- Layout ---------- */
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ---------- Header ---------- */
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1a56db;
+  background: #e8f0fe;
+  padding: 3px 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #666;
+}
+
+/* ---------- Viewport ---------- */
+.viewport {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #e8e8ee;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.viewport-idle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: #999;
+}
+
+.idle-icon {
+  font-size: 36px;
+}
+
+.idle-text {
+  font-size: 13px;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+canvas#overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Loading screen */
+.viewport-loading {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: #888;
+}
+
+.loading-text {
+  font-size: 13px;
+}
+
+.loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #e0e0e0;
+  border-top-color: #1a1a2e;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- Controls ---------- */
+.controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.btn {
+  flex: 1;
+  padding: 10px 0;
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: opacity 0.15s ease;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: #1a1a2e;
+  color: #fff;
+  border: none;
+  font-weight: 700;
+}
+
+.btn-stop {
+  background: #fff;
+  color: #1a1a2e;
+  border: 1px solid #ccc;
+}
+
+/* ---------- Status bar ---------- */
+.status-bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #888;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ccc;
+  flex-shrink: 0;
+}
+
+.status-dot.active {
+  background: #22c55e;
+}
+
+/* ---------- Detections panel ---------- */
+.detections-panel {
+  margin-top: 1rem;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.panel-header {
+  font-size: 11px;
+  font-weight: 700;
+  color: #888;
+  padding: 10px 14px;
+  border-bottom: 1px solid #e0e0e0;
+  background: #fafafa;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.detections-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 12px 14px;
+  min-height: 52px;
+  align-items: center;
+}
+
+.detection-tag {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: #e8f0fe;
+  color: #1a56db;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.detection-conf {
+  opacity: 0.65;
+  font-size: 11px;
+}
+
+.no-detections {
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* ---------- Info panel ---------- */
+.info-panel {
+  margin-top: 2rem;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.info-content {
+  padding: 20px 14px;
+  line-height: 1.6;
+}
+
+.info-content h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-top: 12px;
+  margin-bottom: 8px;
+}
+
+.info-content h3:first-child {
+  margin-top: 0;
+}
+
+.info-content p {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.info-content ul {
+  list-style-position: inside;
+  color: #555;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.info-content ul li {
+  margin-bottom: 6px;
+}
+
+.info-content strong {
+  color: #1a1a2e;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 12px;
+  color: #aaa;
+}

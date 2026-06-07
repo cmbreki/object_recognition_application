@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Platforms - 3rd Assignment</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap">
+  <link rel="stylesheet" href="/static/css/style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.17.0/dist/tf.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.3/dist/coco-ssd.min.js" defer></script>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="badge">AI Platforms - 3rd Assignment</div>
+    <h1>Development of an Object Recognition Application</h1>
+    <p class="subtitle">Real-time detection using COCO-SSD + TensorFlow.js</p>
+  </header>
+
+  <div class="viewport" id="viewport">
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+    <div class="scan-line" id="scanLine"></div>
+
+    <!-- Idle screen -->
+    <div class="viewport-idle" id="idleScreen">
+      <div class="idle-icon">📷</div>
+      <div class="idle-text">Camera feed will appear here</div>
+    </div>
+   
+    <!-- Loading screen -->
+    <div class="viewport-loading" id="loadingScreen">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">Please wait...</div>
+    </div>
+
+    <!-- Video and overlay -->
+    <video id="video" autoplay muted playsinline></video>
+    <canvas id="overlay"></canvas>
+  </div>
+
+  <div class="controls">
+    <button class="btn btn-primary" id="startBtn">▶ START Camera</button>
+    <button class="btn btn-stop" id="stopBtn">■ STOP Camera</button>
+  </div>
+
+  <div class="status-bar">
+    <div class="status-dot" id="statusDot"></div>
+    <span id="statusText">Click START to begin</span>
+  </div>
+
+  <div class="detections-panel">
+    <div class="panel-header">▸ Detected Objects</div>
+    <div class="detections-list" id="detectionsList">
+      <span class="no-detections">No detections yet</span>
+    </div>
+  </div>
+
+  <div class="info-panel">
+    <div class="panel-header">▸ About COCO-SSD</div>
+    <div class="info-content">
+      <h3>What is COCO-SSD?</h3>
+      <p>
+        COCO-SSD (Common Objects in Context - Single Shot MultiBox Detector) is a pre-trained deep learning model 
+        designed for real-time object detection. It can recognize and classify 90 different object categories including 
+        people, animals, vehicles, household items, and more.
+      </p>
+      
+      <h3>How It Works</h3>
+      <p>
+        The model processes each video frame and identifies objects within it by drawing bounding boxes around detected items. 
+        Each detection includes a confidence score (0-100%) indicating how certain the model is about its prediction. 
+        The entire inference happens directly in your browser using TensorFlow.js, meaning no data is sent to external servers.
+      </p>
+      
+      <h3>Performance</h3>
+      <p>
+        On modern browsers, COCO-SSD can process video frames at reasonable speeds depending on your device's GPU capabilities. 
+        The model prioritizes accuracy while maintaining real-time performance for interactive applications.
+      </p>
+    </div>
+  </div>
+
+  <div class="info-panel">
+    <div class="panel-header">▸ AI Tools Used in This Assignment</div>
+    <div class="info-content">
+      <h3>Development Support</h3>
+      <p>
+        AI tools were used to establish the styling and layout of this web application, ensuring 
+        responsive design. Additionally, AI tools were used to conduct research on JavaScript 
+        object detection libraries and evaluate solutions for browser-based object recognition.
+      </p>
+      <p>
+        <em>This documentation was also generated with AI assistance.</em>
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    Object Recognition App · mscaidl0158 · Breki Christina-Marina · 2026
+  </footer>
+
+</div>
+
+<script src="/static/js/script.js"></script>
+</body>
+</html>
